@@ -6,7 +6,7 @@
       {
         "name":"预备知识",
         "children": [
-          { "name":"HTML & CSS" },
+          { "name":"HTML & CSS", "classNames": ["done"] },
           { "name":"JavaScript" },
           { "name":"DOM" },
           { "name":"SVG" },

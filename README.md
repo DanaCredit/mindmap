@@ -30,6 +30,7 @@ npm install @hellowuxin/mindmap
 | gps         | Boolean| true      | 是否显示居中按钮        |
 | fitView     | Boolean| true      | 是否显示缩放按钮        |
 | showNodeAdd | Boolean| true      | 是否显示添加节点按钮     |
+| showNodeRemove | Boolean| true   | 是否显示删除节点菜单    |
 | keyboard    | Boolean| true      | 是否响应键盘事件        |
 | contextMenu | Boolean| true      | 是否响应右键菜单        |
 | zoomable    | Boolean| true      | 是否可缩放、拖移        |
@@ -62,7 +63,7 @@ export default {
         {
           "name":"预备知识",
           "children": [
-            { "name":"HTML & CSS" },
+            { "name":"HTML & CSS", "classNames": ["done"] },
             { "name":"JavaScript" },
             ...
           ]

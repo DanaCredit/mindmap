@@ -18,6 +18,7 @@
         :class="`menu-item ${item.disabled ? 'disabled' : ''}`"
         v-for="(item, index) in contextMenuItems"
         :key="index"
+        :style="(index === 0 && !showNodeRemove) ? 'display: none' : ''"
         @click="item.disabled ? null : clickMenu(item.name)"
       >
         <div>{{ item.title }}</div>
@@ -96,6 +97,7 @@ export default class MindMap extends Vue {
   @Prop({ default: true }) download!: boolean
   @Prop({ default: true }) keyboard!: boolean
   @Prop({ default: true }) showNodeAdd!: boolean
+  @Prop({ default: true }) showNodeRemove!: boolean
   @Prop({ default: true }) contextMenu!: boolean
   @Prop({ default: true }) zoomable!: boolean
   @Prop({ default: true }) showUndo!: boolean
@@ -106,6 +108,8 @@ export default class MindMap extends Vue {
   onKeyboardChanged(val: boolean) { this.makeKeyboard(val) }
   @Watch('showNodeAdd')
   onShowNodeAddChanged(val: boolean) { this.makeNodeAdd(val) }
+  // @Watch('showNodeRemove')
+  // onShowNodeRemoveChanged(val: boolean) { this.makeContextMenu(this.contextMenu) }
   @Watch('draggable')
   onDraggableChanged(val: boolean) { this.makeDrag(val) }
   @Watch('contextMenu')
@@ -891,7 +895,7 @@ export default class MindMap extends Vue {
     const gNode = enter.append('g').attr('class', gClass).attr('transform', gTransform)
 
     const foreign = gNode.append('foreignObject').attr('x', foreignX).attr('y', foreignY)
-    const foreignDiv = foreign.append('xhtml:div').attr('contenteditable', false).text((d: FlexNode) => d.data.name)
+    const foreignDiv = foreign.append('xhtml:div').attr('contenteditable', false).attr('class', (d: FlexNode) => d.data.classNames?.join(' ')).text((d: FlexNode) => d.data.name)
     foreignDiv.on('blur', updateNodeName).on('keydown', divKeyDown).on('mousedown', fdivMouseDown)
     foreignDiv.each((d, i, n) => {
       const observer = new ResizeObserver((l) => {

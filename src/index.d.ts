@@ -9,6 +9,7 @@ interface Mdata {
   name: string
   id: string
   color: string
+  classNames: Array<string>
   gKey: number
   size: number[]
   children?: Array<Mdata>

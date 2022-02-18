@@ -25,6 +25,7 @@
                     :draggable="options.draggable.value"
                     :keyboard="options.keyboard.value"
                     :showNodeAdd="options.showNodeAdd.value"
+                    :showNodeRemove="options.showNodeRemove.value"
                     :contextMenu="options.contextMenu.value"
                     :zoomable="options.zoomable.value"
                     :showUndo="options.showUndo.value"
@@ -114,6 +115,7 @@ export default class App extends Vue {
     keyboard: { value: true },
     draggable: { value: true },
     showNodeAdd: { value: true },
+    showNodeRemove: { value: true },
     contextMenu: { value: true },
     zoomable: { value: true },
     showUndo: { value: true },
@@ -134,5 +136,8 @@ export default class App extends Vue {
 </script>
 
 <style>
-
+.done {
+  text-decoration: line-through;
+  text-decoration-color: red;
+}
 </style>
